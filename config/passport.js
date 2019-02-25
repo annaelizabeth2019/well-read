@@ -27,10 +27,12 @@ passport.use(new GoogleStrategy({
   }
 ));
 
+//give Passport the nugget of data to put into the session for this user
 passport.serializeUser(function(library, done) {
     done(null, library.id);
 });
 
+//provide Passport with the user from the db we want assigned to the req.user object
 passport.deserializeUser(function(library, done){
     Library.findById(id, function(err, student){
         done(err, student);
