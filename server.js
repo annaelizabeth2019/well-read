@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 //session middleware
 var methodOverride = require('method-override');
@@ -26,7 +27,8 @@ var booksRoutes = require('./routes/books');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
+
 
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
