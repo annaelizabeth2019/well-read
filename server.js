@@ -22,7 +22,6 @@ require('./config/passport');
 
 //require routes
 var librariesRoutes = require('./routes/libraries');
-var indexRoutes = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,8 +43,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRoutes);
-app.use('/libraries', librariesRoutes);
+app.use('/', librariesRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
