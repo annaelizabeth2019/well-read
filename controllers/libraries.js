@@ -3,5 +3,5 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    res.render('books/index');
+    res.render('library/index');
 };

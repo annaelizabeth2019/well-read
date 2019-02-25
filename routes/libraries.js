@@ -1,8 +1,8 @@
 var express = require('express');
 var router= express.Router();
-var booksCtrl = require('../controllers/books');
+var librariesCtrl = require('../controllers/libraries');
 
 /* GET books listing. */
-router.get('/', booksCtrl.index);
+router.get('/', librariesCtrl.index);
 
 module.exports = router;

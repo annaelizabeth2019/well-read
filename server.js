@@ -4,9 +4,8 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+//for Google OAuth
 var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 //session middleware
 var methodOverride = require('method-override');
 
@@ -22,8 +21,8 @@ require('./config/database');
 require('./config/passport');
 
 //require routes
+var librariesRoutes = require('./routes/libraries');
 var indexRoutes = require('./routes/index');
-var booksRoutes = require('./routes/books');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRoutes);
-app.use('/books', booksRoutes);
+app.use('/libraries', librariesRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
