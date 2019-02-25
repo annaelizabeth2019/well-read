@@ -9,15 +9,15 @@ router.get('/', librariesCtrl.index);
 router.get('/auth/google', passport.authenticate(
     'google', 
     { scope: ['profile', 'email'] }
-))
+  ));
 
 router.get('/oauth2callback', passport.authenticate(
     'google',
     {
-        successRedirect: '/libraries',
-        failureRedirect: '/libraries'
+      successRedirect : '/libraries',
+      failureRedirect : '/'
     }
-))
+  ));
 
 router.get('/logout', function(req, res){
     req.logout();
