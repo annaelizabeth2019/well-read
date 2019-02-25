@@ -26,3 +26,13 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
+
+passport.serializeUser(function(library, done) {
+    done(null, library.id);
+});
+
+passport.deserializeUser(function(library, done){
+    Library.findById(id, function(err, student){
+        done(err, student);
+    });
+});
