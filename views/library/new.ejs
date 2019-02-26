@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<form id="add-book" action="/my-library" method="POST">
+
+    <label>Title:</label>
+    <input type="text" name="title">
+
+    <label>Author:</label>
+    <input type="text" name="author">
+
+    <label>Published:</label>
+    <input type="year" name="published">
+
+    <label>Have you finished this book?</label>
+    <select name="finished">
+        <option value="true">Yes, add it to my library!</option>
+        <option value="false">Not yet, add it to my reading list.</option>
+    </select>
+
+    <input type="submit" value="Add Movie">
+
+</form>
+
+
+<%- include('../partials/footer') %>

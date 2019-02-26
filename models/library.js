@@ -16,8 +16,19 @@ var booksSchema = new Schema({
         type: String,
         required: true
     },
-    cover: String,
-    published: String
+    cover: {
+        type: String,
+        required: false
+    },
+    published: {
+        type: String,
+        required: false
+    },
+    finished: {
+        type: Boolean,
+        required: true,
+        default: true
+    }
 })
 
 var librarySchema = new Schema({
@@ -30,4 +41,4 @@ var librarySchema = new Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('Library', librarySchema, )
+module.exports = mongoose.model('Library', librarySchema)

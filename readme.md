@@ -1,12 +1,12 @@
-#Well Read
-##by Anna Peterson, Web Developer
+# Well Read
+## by Anna Peterson, Web Developer
 <annapeterson89@gmail.com>
 
-###Description
+### Description
 
 Well Read is an app for users to track the books they read and keep reviews, quotes, and other notes on their favorite literature. 
 
-###Wireframes
+### Wireframes
 
 ![a wireframe of Well Read showing a homepage](images/home.png)
 
