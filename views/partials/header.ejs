@@ -9,18 +9,28 @@
     <title>Well Read</title>
 </head>
 <body>
-  <header>  
-      <div class="login-wrapper navbar navbar-fixed-top navbar-default">
-              <ul class="right">
-                  <% if (user) { %>
-                    <a href="/logout">Log Out</a>
-                  <% } else { %>
-                    <a href="/auth/google">Login <br> with Google</a>
-                  <% } %>
-                  </li>
-              </ul>
-            </div> 
-    <img src="/images/logo.png" alt="owl logo" class="logo"> 
+  <header> 	
+    <div class="search-bar">
+      <div class="input-search">
+        <form action="/top-sellers" method="POST">
+          <input type="text" name="search" class="form-control mr-sm-2" aria-label="Search"
+          placeholder="Search Top Sellers">
+      </div>
+      <div class="search-bar-button">
+          <button class="btn btn-light my-2 my-sm-0"
+          type="submit">Search
+          </button>
+      </div>
+      </form>
+    </div>
+  <img src="/images/logo.png" alt="owl logo" class="logo"> 
+  <div class="login-wrapper">
+      <% if (user) { %>
+        <a href="/logout">Log Out</a>
+      <% } else { %>
+        <a href="/auth/google">Login <br> with Google</a>
+      <% } %>
+    </div> 
   </header>
   <main>
     <br>

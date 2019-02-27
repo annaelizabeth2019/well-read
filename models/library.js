@@ -16,14 +16,12 @@ var booksSchema = new Schema({
         type: String,
         required: true
     },
-    cover: {
-        type: String,
-        required: false
-    },
+    cover: String,
     published: {
         type: String,
         required: false
     },
+    isbn: String,
     finished: {
         type: Boolean,
         required: true,
@@ -32,6 +30,7 @@ var booksSchema = new Schema({
 })
 
 var librarySchema = new Schema({
+    name: String,
     googleId: String,
     avatar: String,
     notes: [notesSchema],

@@ -3,9 +3,9 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    console.log(req.query)
+    console.log(req.user)
     res.render('library/index', {
         user: req.user,
-        name: req.query.name
+        name: req.query.name,
     });
 };

@@ -1,27 +1,4 @@
 <%- include('../partials/header') %>
 
-<div class="my-library">
-    <table id="list">
-        <thead>
-            <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        <% books.forEach(function(b) { %>
-            <tr>
-                <td><%= b.title %></td>
-                <td><%= b.author %></td>
-                <td><a href="/movies/<%= m._id %>">DETAILS</a></td>
-            </tr>
-        <% }); %>
-        </tbody>
-    </table>
-
-    <a href="/my-library/new">Add New Book to my Library!</a>
-</div>
-
 
 <%- include('../partials/footer') %>
