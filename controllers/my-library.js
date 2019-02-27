@@ -1,4 +1,5 @@
 var Library = require('../models/library');
+var key = process.env.GOOGLE_API_KEY;
 
 module.exports = {
     index,

@@ -33,11 +33,9 @@ router.get('/logout', function(req, res){
     res.redirect('/');
 });
 
+/* GET top-sellers listing. */
 
-/* POST to search the API */
-router.post('/', function(req, res, next) {
-  console.log(`search: ${req.body.search}`);
-  res.render('/');
-});
+/* POST to search */
+router.post('/top-sellers', topSellersCtrl.search);
 
 module.exports = router;
