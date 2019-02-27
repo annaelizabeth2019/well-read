@@ -23,8 +23,8 @@ function search(req, res, next) {
           'API_key': key
         }
       };
-      console.log('search:', options, searchQuery)
-    res.render('/top-sellers', {});
-    // https://www.googleapis.com/books/v1/volumes?q=
-
+      request(options, function(err, response, body){
+          res.render('/top-sellers/search', {bookData: body});
+      });
+    console.log('search:', options)
 };
