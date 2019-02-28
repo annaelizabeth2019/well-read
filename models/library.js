@@ -4,7 +4,10 @@ var Schema = mongoose.Schema;
 var librarySchema = new Schema({
     name: String,
     googleId: String,
-    books: [{type: Schema.Types.ObjectId, ref: 'Book'}]
+    books: [
+        {type: Schema.Types.ObjectId, 
+        ref: 'Book'}
+    ]
     },
 {
     timestamps: true

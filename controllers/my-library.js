@@ -8,14 +8,15 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    Library.find(req.user, function(err, library) {
-    (console.log(library))
+
+    Library.findOne(req.user, function(err, library) {
+    (console.log(library, 'this is library'))
     res.render('library/my-library', {
         user: req.user,
         name: req.query.name,
         library: library,
-        books: library[0].books,
-        })
+        books: library.books
+        });
     });
 };
 
@@ -23,16 +24,17 @@ function create(req, res, next) {
     for (let key in req.body){
         if (req.body[key] === '') delete req.body[key];
     }
-    
     var book = new Book(req.body);
+    req.user.books.push(book);
     book.save(function(err) {
     //to handle errors
         if (err) return res.render('/new');
-        // console.log(book);
     });
-    req.user.library[0].push(book);
-    console.log(req.user)
-    res.render('library/my-library', {user: req.user, library: req.user.library[0]});
+    req.user.save(function(err){
+        if (err) return res.render('/new');
+    })
+    console.log(req.user, 'this is req.user')
+    res.redirect('/my-library');
 };
 
 function newBook(req, res, next) {
