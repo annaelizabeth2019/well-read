@@ -1,4 +1,33 @@
 <%- include('../partials/header') %>
 
+<a href="/new">Add a New Book to my Library</a>
+<h1>Library</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+<tbody>
+        <% books.forEach(function(b) { %>
+            <tr>
+                <td><%= b.title %></td>
+                <td><%= b.author %></td>
+                <td><a href="/books/<%= b._id %>">NOTES</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+
+<h1>Wish List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
 
 <%- include('../partials/footer') %>

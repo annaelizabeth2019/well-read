@@ -2,13 +2,31 @@
 
 <% if (books) { %>
     <% books.forEach(function(book){ %>
-        <div class="container">
-            <h5 class="title"><%= book.volumeInfo.title %></h5>
-            <h6>Author: <%= authorParser(book.volumeInfo.authors) %></h6>
-        <div class="container alert">
-            <img src="<%= imgParser(book.volumeInfo.imageLinks.thumbnail) %>" class="img" width="150">
-        </div>
-            <p><%= book.volumeInfo.description %></p>
+        <div class="container-fluid">
+            <div class="title">
+                <h5 class="title"><%= book.volumeInfo.title %></h5>
+                <h6>By <%= authorParser(book.volumeInfo.authors) %></h6>
+            </div>
+            <div class="row alert alert-light
+            ">
+                <div class="col-sm-2">
+                    <img src="<%= imgParser(book.volumeInfo.imageLinks) %>" class="img img-responsive" size="200">
+            </div>
+            
+                <div class="col-sm-7">
+                    About:<br><br>
+                    <p><%= book.volumeInfo.description %></p><br>
+                    Published: <i><%= book.volumeInfo.publishedDate %></i>
+
+                </div>
+                <div class="col-sm-3">
+                        <p>
+                            <a href="" action="POST">Add to My Library!</a>
+                            <a href="/new" action="POST">Add to My Wish List!<span class="glyphicon glyphicon-download"></span></a>
+                        
+                        </p>
+                    </div>
+            </div><hr>
         </div>
     <% }) %>
 

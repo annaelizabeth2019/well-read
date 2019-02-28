@@ -31,11 +31,12 @@ passport.use(new GoogleStrategy({
 
 passport.serializeUser(function(library, done) {
     done(null, library.id);
-});
-
-passport.deserializeUser(function(id, done) {
+  });
+  
+  passport.deserializeUser(function(id, done) {
     Library.findById(id, function(err, library) {
       done(err, library);
     });
   });
+  
 

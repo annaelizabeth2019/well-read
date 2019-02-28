@@ -8,6 +8,9 @@ var topSellersCtrl = require('../controllers/top-sellers');
 /* GET top-sellers listing. */
 router.get('/top-sellers', topSellersCtrl.index);
 
+/* GET add a book to My Library listing. */
+router.get('/new', myLibraryCtrl.new);
+router.post('/my-library', myLibraryCtrl.create)
 /* GET my library listing. */
 router.get('/my-library', myLibraryCtrl.index);
 
@@ -32,8 +35,6 @@ router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
 });
-
-/* GET top-sellers listing. */
 
 /* POST to search */
 router.post('/top-sellers', topSellersCtrl.search);

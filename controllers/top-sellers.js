@@ -21,27 +21,28 @@ function search(req, res, next) {
     var options = {
         url: rootUrl + searchQuery,
         headers: {
-          'API_key': key
+        'API_key': key
         }
       };
       request(options, function(err, response, body){
         var bookData = JSON.parse(body);
-        // let authorsData;
-        // let title, image;
-        //   for (let i = 0; i < bookData.items.length; i++){
-        //     image = bookData.items[i].volumeInfo.imageLinks.thumbnail;
-        //     authorsData = bookData.items[i].volumeInfo.authors;
-        // }
-        console.log(bookData.items[1])
-        res.render('library/search', {books: bookData.items, user: req.user, authorParser: authorParser, imgParser: imgParser})
+        res.render('library/search', {
+        books: bookData.items, 
+        authorParser: authorParser, 
+        imgParser: imgParser, 
+        user: req.user,
+      });
+      console.log(bookData.items[0].volumeInfo)
     })
 };
 
+/* Checks for undefined authors and adds commas between names of multiple authors */
 function authorParser(book) {
     return book === undefined ? 'Author Unknown' : 
     book.length === 1 ? book.toString() : book.join(', ');
   };
 
+/* Checks for undefined image data */
   function imgParser(data) {
-    return data === undefined ? 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjkl-r1xN3gAhUM26wKHdK5DMMQjRx6BAgBEAU&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ANo_image_available.svg&psig=AOvVaw2HovIDuMeG12BbSaS62hTI&ust=1551412724166613' : data;
+    return data === undefined ? "/images/no-img.png" : data.thumbnail;
   };
