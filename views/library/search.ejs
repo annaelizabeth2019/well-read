@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<% if (books) { %>
+    <% books.forEach(function(book){ %>
+        <div class="container">
+            <h5 class="title"><%= book.volumeInfo.title %></h5>
+            <h6>Author: <%= authorParser(book.volumeInfo.authors) %></h6>
+        <div class="container alert">
+            <img src="<%= imgParser(book.volumeInfo.imageLinks.thumbnail) %>" class="img" width="150">
+        </div>
+            <p><%= book.volumeInfo.description %></p>
+        </div>
+    <% }) %>
+
+    <% } else { %>
+<h1> Please search for something! </h1>
+<% } %> 
+
+<%- include('../partials/footer') %>
