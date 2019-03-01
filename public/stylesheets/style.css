@@ -33,6 +33,7 @@ footer {
   /* flex-shrink: 0; */
   flex-direction: column;
   justify-content: space-evenly;
+  font-size: 17px;
 }
 
 nav {
@@ -48,7 +49,6 @@ nav > a {
 
 header {
   margin: 0;
-  /* margin-bottom: 1em; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   position: fixed;
@@ -71,12 +71,26 @@ header {
   margin: 0 auto;
 }
 
-.search-bar, .login-wrapper {
+.search-bar, .login-wrapper, .col-sm-3 {
   display: flex;
   align-items: center;
   margin: 0 auto;
 }
 
+.login-wrapper {
+  font-size: 18px;
+}
+
+.col-sm-3 {
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .search-bar-button{
   margin: .5em;
+}
+
+.notes {
+  width: 50%;
+  height: 4em;
 }

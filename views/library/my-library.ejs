@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
 
-<a href="/new">Add a New Book to my Library</a>
 <h1>Library</h1>
-<table>
+<div class="table-responsive">
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Notes</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th class="notes" scope="col">Notes</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
         </tr>
     </thead>
 <tbody>
@@ -15,19 +17,17 @@
             <tr>
                 <td><%= b.title %></td>
                 <td><%= b.author %></td>
-                <td><a href="/books/<%= b._id %>">NOTES</a></td>
+                <td class="notes"><%= b.notes %></td>
+                <td><form method="POST" action="/my-library/<%= b._id %>?_method=DELETE">
+                   <button>Delete</button></form></td>
+                <td><form method="POST" action="/my-library/<%= b._id %>?_method=PUT">
+                    <button>Edit</button></form></td>
             </tr>
         <% }); %>
     </tbody>
+    </table>
+</div>
 
-<h1></h1>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Notes</th>
-        </tr>
-    </thead>
+<a href="/new">Add a New Book to my Library</a>
 
 <%- include('../partials/footer') %>

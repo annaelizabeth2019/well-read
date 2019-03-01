@@ -1,12 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var notesSchema =  new Schema({
-    text: String
-}, {
-    timestamps: true
-});
-
 var bookSchema = new Schema({
     title: {
         type: String,
@@ -23,7 +17,7 @@ var bookSchema = new Schema({
         required: true,
         default: true
     },
-    notes: [notesSchema]
+    notes: String
 })
 
 module.exports = mongoose.model ('Book', bookSchema)

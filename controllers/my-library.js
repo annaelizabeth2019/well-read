@@ -5,10 +5,12 @@ module.exports = {
     index,
     create,
     new: newBook,
-    delete: deleteBook
+    delete: deleteBook,
+    edit
 };
 
 function index(req, res, next) {
+    req.user == null ? res.redirect('/auth/google') :
     Library.findOne({_id: req.user.id})
     .populate('books')
     .exec((err, bookies) => {
@@ -17,7 +19,8 @@ function index(req, res, next) {
             name: req.query.name,
             books: bookies.books
             });
-    })
+        })
+    
 };
 
 function create(req, res, next) {
@@ -46,7 +49,13 @@ function deleteBook(req, res, next) {
             console.log(error)
         } else {
             console.log(deleteBook, 'This Book was deleted')
-            res.redirect('/home')
+            res.redirect('/my-library')
         }
     });
 };
+
+function edit(req, res, next) {
+    Book.findById(req.params.id, function(err, book){
+        res.render('/my-library/:id/edit', {book, req})
+    })
+}

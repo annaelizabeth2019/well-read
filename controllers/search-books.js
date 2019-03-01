@@ -32,7 +32,7 @@ function search(req, res, next) {
         imgParser: imgParser, 
         user: req.user,
       });
-      console.log(bookData.items[0].volumeInfo)
+      console.log(bookData.items[0])
     })
 };
 
