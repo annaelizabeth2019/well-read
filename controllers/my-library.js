@@ -7,6 +7,10 @@ module.exports = {
     new: newBook
 };
 
+function loopedyLoop(){
+    
+}
+
 function index(req, res, next) {
 
     Library.findOne(req.user, function(err, library) {
