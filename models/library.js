@@ -1,12 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Book = require('./book')
 
 var librarySchema = new Schema({
     name: String,
     googleId: String,
-    books: {type: Schema.Types.ObjectId, 
-        ref: 'Book'}
+    books: [{type: Schema.Types.ObjectId,
+        ref: 'Book'}]
     },
 {
     timestamps: true
