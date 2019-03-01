@@ -13,6 +13,8 @@ router.get('/new', myLibraryCtrl.new);
 router.post('/my-library', myLibraryCtrl.create)
 /* GET my library listing. */
 router.get('/my-library', myLibraryCtrl.index);
+router.delete('/mylibrary/:id', myLibraryCtrl.delete)
+
 
 /* GET books listing. */
 router.get('/', librariesCtrl.index);

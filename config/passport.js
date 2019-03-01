@@ -18,8 +18,8 @@ passport.use(new GoogleStrategy({
             //we have a new user!
             var newLibrary = new Library({
                 name: profile.displayName,
-                googleId: profile.id,
-                books: Library.books
+                email: profile.emails[0].value,
+                googleId: profile.id
             });
             newLibrary.save(function(err){
                 if (err) return cb(err);
