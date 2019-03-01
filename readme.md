@@ -48,7 +48,9 @@ The books are embedded in the library Schema and contain these values:
 After looking at the NYT books API, I ultimately went with Google Books because it has **extensive documentation**. Check it out at: <https://developers.google.com/books/docs/v1/getting_started>
 
 Just for fun, let's preview the table of contents for Google's documentation: 
+
 ![A table of contents for google books API](images/GoogleAPI.png) 
+
 Very documented!
 
 How about the NYT Books table of contents? Well, they don't exactly have a Table of Contents, but they do have *this*:
