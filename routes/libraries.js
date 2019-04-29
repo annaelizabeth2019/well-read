@@ -40,6 +40,7 @@ router.get('/logout', function(req, res){
 });
 
 /* POST to search */
-router.post('/search-books', searchBooksCtrl.search);
+router.post('/search/:id', searchBooksCtrl.search);
+router.post('/search', searchBooksCtrl.addToLibrary);
 
 module.exports = router;

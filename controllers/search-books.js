@@ -1,10 +1,12 @@
 var key = process.env.GOOGLE_API_KEY;
 var request = require('request');
 const rootUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
+const addUrl = 'https://www.googleapis.com/books/v1/volumes/';
 
 module.exports = {
     index,
-    search
+    search,
+    addToLibrary
 };
 
 function index(req, res, next) {
@@ -32,7 +34,7 @@ function search(req, res, next) {
         imgParser: imgParser, 
         user: req.user,
       });
-      console.log(bookData.items[0])
+      console.log(bookData.items)
     })
 };
 
@@ -45,4 +47,21 @@ function authorParser(book) {
 /* Checks for undefined image data */
   function imgParser(data) {
     return data === undefined ? "/images/no-img.png" : data.thumbnail;
+  };
+
+  function addToLibrary(req, res, next){
+    var options = {
+        url: rootUrl + req.params.id,
+        headers: {
+        'API_key': key
+        }
+      };
+      request(options, function(err, response, body){
+        var bookData = JSON.parse(body);
+        res.render('library/search', {
+        books: bookData.items, 
+        authorParser: authorParser, 
+        imgParser: imgParser, 
+        user: req.user,
+      })}
   };

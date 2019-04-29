@@ -10,7 +10,7 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    req.user == null ? res.redirect('/auth/google') :
+    req.user ?
     Library.findOne({_id: req.user.id})
     .populate('books')
     .exec((err, bookies) => {
@@ -20,6 +20,7 @@ function index(req, res, next) {
             books: bookies.books
             });
         })
+        : res.redirect('/auth/google')
     
 };
 
@@ -36,11 +37,13 @@ function create(req, res, next) {
     req.user.save(function(err){
         if (err) return res.render('/new');
     })
-    res.redirect('/my-library');
+    res.redirect('/my-library')
 };
 
 function newBook(req, res, next) {
-    res.render('library/new', { title: 'Add Book', user: req.user, Book });
+    req.user ? 
+    res.render('library/new', { title: 'Add Book', user: req.user, Book })
+    : res.redirect('/auth/google') 
 };
 
 function deleteBook(req, res, next) {
@@ -48,7 +51,7 @@ function deleteBook(req, res, next) {
         if(error){
             console.log(error)
         } else {
-            console.log(deleteBook, 'This Book was deleted')
+            console.log(deletedBook, 'This Book was deleted')
             res.redirect('/my-library')
         }
     });
