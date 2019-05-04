@@ -10,7 +10,6 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    console.log(req.query)
     res.render('top-sellers/index', {
         user: req.user,
         name: req.query.name
@@ -34,7 +33,6 @@ function search(req, res, next) {
         imgParser: imgParser, 
         user: req.user,
       });
-      console.log(bookData.items)
     })
 };
 
